@@ -18,15 +18,67 @@ var QandA = [
 var beginning = true
 var userPoints = 0
 var questionIndex = 0
+var questionTimer = 15
+var nqTimer = 3
+var timerInterval
 
 $(document).ready(function () {
+
+    // Start of question timer
+    function decreaseQuestionTimer() {
+        questionTimer--;
+        $("#timer").html("Time Remaining: " + questionTimer);
+
+        if (questionTimer === 0) {
+            stopTimer()
+            runNQTimer()
+            questionTimer = 20
+            nqTimer = 4
+            $("#question").text("Time is up...")
+            $("#answer1").text("")
+            $("#answer2").text("")
+        }
+    }
+
+    function runQuestionTimer() {
+        clearInterval(timerInterval);
+        timerInterval = setInterval(decreaseQuestionTimer, 1000);
+    }
+    // End of question timer
+
+    // Start of nqTimer
+    function decreaseNQTimer() {
+        nqTimer--;
+        $("#timer").html("Next Question: " + nqTimer);
+
+        if (nqTimer === 0) {
+            stopTimer()
+            newQuestion()
+            questionTimer = 20
+            nqTimer = 4
+        }
+    }
+
+    function runNQTimer() {
+        clearInterval(timerInterval);
+        timerInterval = setInterval(decreaseNQTimer, 1000);
+    }
+    // End of nqTimer
+
+    function stopTimer() {
+        clearInterval(timerInterval)
+    }
 
     function newQuestion() {
         $("#question").text(QandA[questionIndex].q)
         $("#answer1").append("<button>" + QandA[questionIndex].a + "</button>")
         $("#answer2").append("<button>" + QandA[questionIndex].bad + "</button>")
 
+        runQuestionTimer()
+
         $("#answer1").on("click", function () {
+            stopTimer()
+            runNQTimer()
             $("#question").text("Correct!")
             $("#answer1").text("")
             $("#answer2").text("")
@@ -34,6 +86,8 @@ $(document).ready(function () {
         })
 
         $("#answer2").on("click", function () {
+            stopTimer()
+            runNQTimer()
             $("#question").text("Wrong!")
             $("#answer1").text("")
             $("#answer2").text("")
