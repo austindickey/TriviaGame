@@ -1,5 +1,5 @@
 var QandA = [
-    { q: "What’s the diameter of a basketball hoop in inches?", a: "18 inches" },
+    { q: "What’s the diameter of a basketball hoop in inches?", a: "18 inches", bad: "16 inches" },
     { q: "What do you call it when a player makes three back to back strikes in bowling?", a: "Turkey" },
     { q: "A sporting event is held every year on Memorial Day. What is it?", a: "Indianapolis 500" },
     { q: "How many players are on a baseball team?", a: "9" },
@@ -16,11 +16,28 @@ var QandA = [
     { q: "What is the NFL's record distance for a single punt?", a: "98 yards" }
 ]
 var beginning = true
+var userPoints = 0
 
 $(document).ready(function () {
 
     function newQuestion() {
+        $("#question").text(QandA[0].q)
+        $("#answer1").append("<button>" + QandA[0].a + "</button>")
+        $("#answer2").append("<button>" + QandA[0].bad + "</button>")
 
+        $("#answer1").on("click", function () {
+            $("#question").text("Correct!")
+            $("#answer1").text("")
+            $("#answer2").text("")
+            userPoints++
+        })
+
+        $("#answer2").on("click", function () {
+            $("#question").text("Wrong!")
+            $("#answer1").text("")
+            $("#answer2").text("")
+            userPoints++
+        })
     }
 
     function startGame() {

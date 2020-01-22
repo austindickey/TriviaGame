@@ -1,0 +1,28 @@
+/* =================================
+            Main Content
+================================= */
+
+#title h1 {
+    text-align: center;
+    background-color: #4cd5f7;
+    margin: 30px 15%;
+    padding: 15px 0;
+    font-style: italic;
+}
+
+#instructions {
+    background-color: #fca420;
+    padding: 5%;
+}
+
+#game {
+    margin-top: 15px;
+    height: 200px;
+    background-color: #4cd5f7;
+    text-align: center;
+    padding: 10px;
+}
+
+#timer {
+    margin: 10px 0;
+}
