@@ -70,31 +70,41 @@ $(document).ready(function () {
     }
 
     function newQuestion() {
+        var randNum = Math.floor(Math.random() * 2)
+
         $("#question").text(QandA[questionIndex].q)
-        $("#answer1").append("<button>" + QandA[questionIndex].a + "</button>")
-        $("#answer2").append("<button>" + QandA[questionIndex].bad + "</button>")
+
+        if (randNum === 1){
+            $("#answer1").append("<button class='answers' data-answer='correct'>" + QandA[questionIndex].a + "</button>")
+            $("#answer2").append("<button class='answers' data-answer='wrong'>" + QandA[questionIndex].bad + "</button>")
+        }
+        else {
+            $("#answer1").append("<button class='answers' data-answer='wrong'>" + QandA[questionIndex].bad + "</button>")
+            $("#answer2").append("<button class='answers' data-answer='correct'>" + QandA[questionIndex].a + "</button>")
+        }
 
         runQuestionTimer()
 
-        $("#answer1").on("click", function () {
+        questionIndex++
+    }
+
+    $(document).on("click", ".answers", function () {
+        
+        if ($(this).attr("data-answer") === "correct") {
             stopTimer()
             runNQTimer()
             $("#question").text("Correct!")
             $("#answer1").text("")
             $("#answer2").text("")
             userPoints++
-        })
-
-        $("#answer2").on("click", function () {
+        } else {
             stopTimer()
             runNQTimer()
             $("#question").text("Wrong!")
             $("#answer1").text("")
             $("#answer2").text("")
-        })
-
-        questionIndex++
-    }
+        }
+    })
 
     function startGame() {
         if (beginning) {
