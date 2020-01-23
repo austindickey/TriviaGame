@@ -2,6 +2,11 @@
             Main Content
 ================================= */
 
+body {
+    background-image: url(../images/bg.png);
+    overflow-x: hidden;
+}
+
 #title h1 {
     text-align: center;
     background-color: #4cd5f7;
@@ -33,4 +38,8 @@
     padding: 5%;
     margin-top: 15px;
     text-align: center;
+}
+
+#userScore {
+    font-size: 24px;
 }

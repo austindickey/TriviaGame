@@ -13,10 +13,12 @@ var QandA = [
     { q: "Who was the youngest player to reach 10,000 points in the regular season in 20th century NBA?", a: "Kobe Bryant", bad: "Lebron James" },
     { q: "How many seasons did Michael Jordan play with the Chicago Bulls?", a: "13", bad: "11" },
     { q: "Kyrie Irving was born in what country?", a: "Australia", bad: "Germany" },
-    { q: "What is the NFL's record distance for a single punt?", a: "98 yards", bad: "78 yards" }
+    { q: "What is the NFL's record distance for a single punt?", a: "98 yards", bad: "78 yards" },
+    { q: "" }
 ]
 var beginning = true
 var userPoints = 0
+var missedQ = 0
 var questionIndex = 0
 var questionTimer = 15
 var nqTimer = 3
@@ -32,8 +34,8 @@ $(document).ready(function () {
         if (questionTimer === 0) {
             stopTimer()
             runNQTimer()
-            questionTimer = 20
-            nqTimer = 4
+            questionTimer = 15
+            nqTimer = 3
             $("#question").text("Time is up...")
             $("#answer1").text("")
             $("#answer2").text("")
@@ -54,8 +56,8 @@ $(document).ready(function () {
         if (nqTimer === 0) {
             stopTimer()
             newQuestion()
-            questionTimer = 20
-            nqTimer = 4
+            questionTimer = 15
+            nqTimer = 3
         }
     }
 
@@ -77,8 +79,7 @@ $(document).ready(function () {
         if (randNum === 1){
             $("#answer1").append("<button class='answers' data-answer='correct'>" + QandA[questionIndex].a + "</button>")
             $("#answer2").append("<button class='answers' data-answer='wrong'>" + QandA[questionIndex].bad + "</button>")
-        }
-        else {
+        } else {
             $("#answer1").append("<button class='answers' data-answer='wrong'>" + QandA[questionIndex].bad + "</button>")
             $("#answer2").append("<button class='answers' data-answer='correct'>" + QandA[questionIndex].a + "</button>")
         }
@@ -86,6 +87,28 @@ $(document).ready(function () {
         runQuestionTimer()
 
         questionIndex++
+
+        if (questionIndex === 16 && userPoints > 11) {
+            stopTimer()
+            $("#timer").text("")
+            $("#game h3").text("Congratulations!")
+            $("#question").text("You are a sports trivia king!")
+            $("#answer1").text("Correct: " + userPoints)
+            $("#answer2").text("Wrong: " + missedQ)
+            $("#restart").append("<button class='reset'>Restart Game</button>")
+            resetGame()
+            
+        } else if (questionIndex === 16){
+            stopTimer()
+            $("#timer").text("")
+            $("#game h3").text("Sorry...")
+            $("#question").text("Better luck next time!")
+            $("#answer1").text("Correct: " + userPoints)
+            $("#answer2").text("Wrong: " + missedQ)
+            $("#restart").append("<button class='reset'>Restart Game</button>")
+            resetGame()
+        }
+        
     }
 
     $(document).on("click", ".answers", function () {
@@ -93,18 +116,39 @@ $(document).ready(function () {
         if ($(this).attr("data-answer") === "correct") {
             stopTimer()
             runNQTimer()
+            userPoints++
             $("#question").text("Correct!")
             $("#answer1").text("")
             $("#answer2").text("")
-            userPoints++
+            $("#userScore").text(userPoints)
         } else {
             stopTimer()
             runNQTimer()
             $("#question").text("Wrong!")
             $("#answer1").text("")
             $("#answer2").text("")
+            missedQ++
         }
     })
+
+    function resetGame() {
+        $(document).on("click", ".reset", function () {
+            $("#game h3").text("Question:")
+            $("#question").text("")
+            $("#question").append("<button id='start'>Start Game</button>")
+            $("#answer1").text("")
+            $("#answer2").text("")
+            $("#restart").text("")
+            $("#userScore").text("")
+            beginning = true
+            userPoints = 0
+            missedQ = 0
+            questionIndex = 0
+            questionTimer = 15
+            nqTimer = 3
+            startGame()
+        })
+    }
 
     function startGame() {
         if (beginning) {
