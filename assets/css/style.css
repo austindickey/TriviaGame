@@ -4,7 +4,6 @@
 
 body {
     background-image: url(../images/bg.png);
-    overflow-x: hidden;
 }
 
 #title h1 {
@@ -40,16 +39,65 @@ body {
     text-align: center;
 }
 
+#title h1,
+#instructions,
+#game,
+#score {
+    border: 3px solid #000;
+    border-radius: 8px;
+}
+
 #userScore {
     font-size: 24px;
 }
 
 button {
     background-color: #fca420;
-    border-color: #4d4d4d;
+    border: 3px solid #4d4d4d;
     border-radius: 15px;
 }
 
 button:hover {
     background-color: #f7c67e;
+}
+
+/* =================================
+            Footer
+================================= */
+
+#clearFix {
+    height: 30px;
+}
+
+footer {
+    width: 100%;
+    height: 75px;
+    background-color: #fca420;
+    text-align: center;
+    padding-top: 25px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    /* z-index: -10; */
+}
+
+a {
+    color: rgb(30, 135, 201);
+}
+
+a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* =================================
+        Mobile Responsivness
+================================= */
+
+@media (max-width: 414px) {
+    #instructions,
+    #game,
+    #score {width: 90%; margin: 10px 5%;}
+    #clearfix {height: 15px;}
+    footer {margin-top: 0;}
 }
