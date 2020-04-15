@@ -1,73 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sports Trivia Game</title>
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <!-- Title -->
-    <section class="row">
-        <div class="col-lg-3 col-md-1 col-sm-1"></div>
-        <div class="col-lg-6 col-md-10 col-sm-10">
-            <div id="title">
-                <h1>Sports Trivia Game</h1>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-1 col-sm-1"></div>
-    </section>
-    <!-- Instructions -->
-    <section class="row">
-        <div class="col-lg-3 col-md-1 col-sm-12"></div>
-        <div class="col-lg-6 col-md-10 col-sm-12">
-            <div id="instructions">
-                <h3>Instructions:</h3>
-                <p>Choose the correct answer to the question before time runs out, and you'll get a point.</p>
-                <p>Accrue at least 12 points to be deemed a sports trivia king!</p>
-                <p>Good luck!</p>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-1 col-sm-12"></div>
-    </section>
-    <!-- Questions -->
-    <section class="row">
-        <div class="col-lg-3 col-md-1 col-sm-12"></div>
-        <div class="col-lg-6 col-md-10 col-sm-12">
-            <div id="game">
-                <h3>Question:</h3>
-                <p id="timer"></p>
-                <p id="question"><button id="start">Start Game</button></p>
-                <p id="answer1"></p>
-                <p id="answer2"></p>
-                <p id="restart"></p>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-1 col-sm-12"></div>
-    </section>
-    <!-- Score -->
-    <section class="row">
-        <div class="col-lg-3 col-md-1 col-sm-12"></div>
-        <div class="col-lg-6 col-md-10 col-sm-12">
-            <div id="score">
-                <h3>Points:</h3>
-                <p id="userScore"></p>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-1 col-sm-12"></div>
-    </section>
-    <!-- Footer -->
-    <div id="clearFix"></div>
 
+    <!-- Script CDN Links -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascript/app.js"></script>
+</head>
+
+<body>
+    <div class="content">
+        <!-- Title -->
+        <section class="row">
+            <div class="col-lg-3 col-md-1 col-sm-1"></div>
+            <div class="col-lg-6 col-md-10 col-sm-10">
+                <div id="title">
+                    <h1>Sports Trivia Game</h1>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-1 col-sm-1"></div>
+        </section>
+        <!-- Instructions -->
+        <section class="row">
+            <div class="col-lg-3 col-md-1 col-sm-12"></div>
+            <div class="col-lg-6 col-md-10 col-sm-12">
+                <div id="instructions">
+                    <h3>Instructions:</h3>
+                    <p>Choose the correct answer to the question before time runs out, and you'll get a point.</p>
+                    <p>Accrue at least 12 points to be deemed a sports trivia king!</p>
+                    <p>Good luck!</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-1 col-sm-12"></div>
+        </section>
+        <!-- Questions -->
+        <section class="row">
+            <div class="col-lg-3 col-md-1 col-sm-12"></div>
+            <div class="col-lg-6 col-md-10 col-sm-12">
+                <div id="game">
+                    <h3>Question:</h3>
+                    <p id="timer"></p>
+                    <p id="question"><button id="start">Start Game</button></p>
+                    <p id="answer1"></p>
+                    <p id="answer2"></p>
+                    <p id="restart"></p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-1 col-sm-12"></div>
+        </section>
+        <!-- Score -->
+        <section class="row">
+            <div class="col-lg-3 col-md-1 col-sm-12"></div>
+            <div class="col-lg-6 col-md-10 col-sm-12">
+                <div id="score">
+                    <h3>Points:</h3>
+                    <p id="userScore"></p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-1 col-sm-12"></div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
     <footer>
         <p>Created by <a href="https://austindickey.github.io/" target="_blank">Austin Dickey</a></p>
     </footer>
-    <!-- Script CDN's -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/javascript/app.js"></script>
 </body>
+
 </html>
